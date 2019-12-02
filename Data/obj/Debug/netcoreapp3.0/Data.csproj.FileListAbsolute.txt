@@ -5,3 +5,4 @@ C:\Code\BugTracker\Data\obj\Debug\netcoreapp3.0\Data.AssemblyInfoInputs.cache
 C:\Code\BugTracker\Data\obj\Debug\netcoreapp3.0\Data.AssemblyInfo.cs
 C:\Code\BugTracker\Data\obj\Debug\netcoreapp3.0\Data.dll
 C:\Code\BugTracker\Data\obj\Debug\netcoreapp3.0\Data.pdb
+C:\Code\BugTracker\Data\obj\Debug\netcoreapp3.0\Data.csprojAssemblyReference.cache
