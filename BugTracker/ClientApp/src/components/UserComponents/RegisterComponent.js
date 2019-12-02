@@ -1,8 +1,13 @@
 ﻿import React, { Component } from 'react';
-import { Button, Checkbox, Form } from 'semantic-ui-react'
+import { Header, Button, Form } from 'semantic-ui-react'
 import axios from 'axios'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+import validator from 'email-validator';
+
 
 export class RegisterComponent extends Component {
+
     constructor() {
         super()
         this.state = {
@@ -12,7 +17,8 @@ export class RegisterComponent extends Component {
             lastName: "",
             profilePicture: "test",
             type: "",
-            password: ""
+            password: "",
+            confirmPassword: ""
         }
 
         this.handleChange = this.handleChange.bind(this)
@@ -21,6 +27,7 @@ export class RegisterComponent extends Component {
 
     handleChange(event) {
         const { name, value } = event.target
+
         this.setState({
             [name]: value
         })
@@ -28,21 +35,39 @@ export class RegisterComponent extends Component {
 
     handleFormSubmit() {
 
-        const { id, emailAddress, firstName, lastName, profilePicture, type, password } = this.state;
+        const { id, emailAddress, firstName, lastName, profilePicture, type, password, confirmPassword } = this.state;
 
-        axios.post('/api/users', {
-            id, emailAddress, firstName, lastName, profilePicture, type, password
-        })
-            .then(function (response) {
-                console.log(response);
+        const isValid = validator.validate(emailAddress)
+
+        if (!isValid)
+        {
+            toast.error("please enter valid email", {
+                position: toast.POSITION.TOP_CENTER
+            });
+        }
+
+        const isMatch = password === confirmPassword;
+
+        isMatch ?
+            axios.post('/api/users', {
+                id, emailAddress, firstName, lastName, profilePicture, type, password
             })
-            .catch(function (error) {
-                console.log(error);
+                .then(function (response) {
+                    console.log(response);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                }) :
+
+            toast.error("passwords does not match", {
+                position: toast.POSITION.TOP_CENTER
             });
     }
 
     render() {
         return (
+            <div>
+                <Header as='h1' textAlign='center'>Create Account</Header>
             <Form onSubmit={this.handleFormSubmit}>
                 <Form.Field>
                     <label>First Name</label>
@@ -64,8 +89,14 @@ export class RegisterComponent extends Component {
                     <label>Password</label>
                     <input placeholder='Password' name='password' value={this.state.password} onChange={this.handleChange}/>
                 </Form.Field>
+                <Form.Field>
+                    <label>Confirm Password</label>
+                    <input placeholder='Password' name='confirmPassword' value={this.state.confirmPassword} onChange={this.handleChange} />
+                </Form.Field>
                 <Button type='submit'>Submit</Button>
-            </Form>
+                </Form>
+                <ToastContainer />
+                </div>
         )
     } 
 }

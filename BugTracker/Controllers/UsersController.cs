@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Data.DataContext;
 using Data.Models;
+using System.Security.Cryptography;
+using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 
 namespace BugTracker.Controllers
 {
@@ -80,7 +82,39 @@ namespace BugTracker.Controllers
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
         {
-            _context.User.Add(user);
+            // check if email already exists
+            User isEmail = _context.User.Where(u => u.EmailAddress == user.EmailAddress).FirstOrDefault<User>();
+
+            if (isEmail == null)
+            {
+                //hash password
+                string password = user.Password;
+                byte[] salt = new byte[128 / 8];
+
+                using (var rng = RandomNumberGenerator.Create())
+                {
+                    rng.GetBytes(salt);
+                }
+
+                string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
+                    password: password,
+                    salt: salt,
+                    prf: KeyDerivationPrf.HMACSHA1,
+                    iterationCount: 1000,
+                    numBytesRequested: 256/8 
+                ));
+
+                user.Password = hashed;
+
+                _context.User.Add(user);
+
+            }
+            // if email exists return error message
+            else
+            {
+                return BadRequest("email already exists");
+            }
+                        
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetUser", new { id = user.Id }, user);
