@@ -1,18 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Code\\BugTracker\\Data\\Data.csproj": {}
+    "C:\\code\\BugTracker\\Data\\Data.csproj": {}
   },
   "projects": {
-    "C:\\Code\\BugTracker\\Data\\Data.csproj": {
+    "C:\\code\\BugTracker\\Data\\Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Code\\BugTracker\\Data\\Data.csproj",
+        "projectUniqueName": "C:\\code\\BugTracker\\Data\\Data.csproj",
         "projectName": "Data",
-        "projectPath": "C:\\Code\\BugTracker\\Data\\Data.csproj",
+        "projectPath": "C:\\code\\BugTracker\\Data\\Data.csproj",
         "packagesPath": "C:\\Users\\Hung\\.nuget\\packages\\",
-        "outputPath": "C:\\Code\\BugTracker\\Data\\obj\\",
+        "outputPath": "C:\\code\\BugTracker\\Data\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
           "C:\\Users\\Hung\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -40,7 +43,7 @@
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[3.0.1, )"
+              "version": "[3.0.0, )"
             }
           },
           "imports": [

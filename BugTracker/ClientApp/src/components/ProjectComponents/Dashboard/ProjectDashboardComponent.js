@@ -1,7 +1,7 @@
 ﻿import React, { Component } from 'react';
-import ProjectDashboardDescriptionComponent from '../ProjectDashboard/ProjectDashboardDescriptionComponent';
-import ProjectDashboardListComponent from '../ProjectDashboard/ProjectDashboardListComponent';
-import ProjectDashboardStatusComponent from '../ProjectDashboard/ProjectDashboardStatusComponent';
+import ProjectDashboardDescriptionComponent from '../Dashboard/ProjectDashboardDescriptionComponent';
+import ProjectDashboardListComponent from '../Dashboard/ProjectDashboardListComponent';
+import ProjectDashboardStatusComponent from '../Dashboard/ProjectDashboardStatusComponent';
 import {Grid, Header} from 'semantic-ui-react';
 
 
