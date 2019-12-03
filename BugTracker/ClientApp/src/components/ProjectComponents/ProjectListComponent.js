@@ -1,5 +1,5 @@
 ﻿import React, { Component } from 'react';
-import { Button, Checkbox, Icon, Table } from 'semantic-ui-react';
+import { Checkbox, Table } from 'semantic-ui-react';
 
 
 export class ProjectListComponent extends Component {
