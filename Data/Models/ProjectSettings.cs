@@ -8,11 +8,9 @@ namespace Data.Models
     {
         public int Id { get; set; }
         public int ProjectId { get; set; }
-        public string Name { get; set; }
+        public string ProjectTitle { get; set; }
         public DateTime DateCreated { get; set; }
-        public int IsActive { get; set; }
-        public decimal Version { get; set; }
-        public string GitRepo { get; set; }
-        public int isArchived { get; set; }
+        public DateTime DateEnd { get; set; }
+        public  string ProjectOverview { get; set; }
     }
 }

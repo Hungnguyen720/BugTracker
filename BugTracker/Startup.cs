@@ -32,10 +32,10 @@ namespace BugTracker
             });
 
             services.AddDbContext<ProjectContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("ProjectTracker")));
+            options.UseSqlServer(Configuration.GetConnectionString("ProjectTrackerDB")));
 
             services.AddDbContext<UserContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("ProjectTracker")));
+                options.UseSqlServer(Configuration.GetConnectionString("ProjectTrackerDB")));
 
         }
 
