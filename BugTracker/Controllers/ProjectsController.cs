@@ -81,6 +81,10 @@ namespace BugTracker.Controllers
         public async Task<ActionResult<Projects>> PostProjects(Projects projects)
         {
             // get max id in db as id of project
+            int maxId = _context.Projects.Max(p => p.Id);
+
+            projects.Id = maxId + 1;
+
             _context.Projects.Add(projects);
             
             await _context.SaveChangesAsync();

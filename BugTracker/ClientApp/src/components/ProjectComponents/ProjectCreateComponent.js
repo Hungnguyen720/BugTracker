@@ -59,12 +59,25 @@ export class ProjectCreateComponent extends Component {
         axios.post('api/projects', {
             ProjectName
         }).then(function (response) {
-            console.log(response)
+
+            let projectId = response.data.id;
+
+            axios.post('api/projectsettings', {
+                "ProjectId": projectId,
+                ProjectName,
+                Owner,
+                DateStart,
+                DateEnd
+            }).then(function (response) {
+                console.log(response)
+            }).catch(function (response) {
+                console.log(response)
+            })       
+
         }).catch(function (response) {
             console.log(response)
         })
-    }
-
+}
  
     render() {
         const { editorState } = this.state;
