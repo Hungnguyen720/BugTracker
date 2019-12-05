@@ -80,7 +80,9 @@ namespace BugTracker.Controllers
         [HttpPost]
         public async Task<ActionResult<Projects>> PostProjects(Projects projects)
         {
+            // get max id in db as id of project
             _context.Projects.Add(projects);
+            
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetProjects", new { id = projects.Id }, projects);

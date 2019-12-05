@@ -583,21 +583,17 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Hung\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\Hung\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\code\\BugTracker\\Data\\Data.csproj",
+      "projectUniqueName": "C:\\Code\\BugTracker\\Data\\Data.csproj",
       "projectName": "Data",
-      "projectPath": "C:\\code\\BugTracker\\Data\\Data.csproj",
+      "projectPath": "C:\\Code\\BugTracker\\Data\\Data.csproj",
       "packagesPath": "C:\\Users\\Hung\\.nuget\\packages\\",
-      "outputPath": "C:\\code\\BugTracker\\Data\\obj\\",
+      "outputPath": "C:\\Code\\BugTracker\\Data\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
         "C:\\Users\\Hung\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
