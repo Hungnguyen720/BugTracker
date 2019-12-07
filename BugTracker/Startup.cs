@@ -40,6 +40,8 @@ namespace BugTracker
             services.AddDbContext<UserContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("ProjectTrackerDB")));
 
+            services.AddDbContext<BugContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("ProjectTrackerDB")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

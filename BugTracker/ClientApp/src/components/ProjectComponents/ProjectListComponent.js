@@ -1,8 +1,14 @@
 ﻿import React, { Component } from 'react';
 import { Checkbox, Table } from 'semantic-ui-react';
+import axios from 'axios';
 
 
 export class ProjectListComponent extends Component {
+
+
+
+    
+
     render() {
         return (
             <div>
@@ -11,13 +17,12 @@ export class ProjectListComponent extends Component {
                 <Table.Header>
                     <Table.Row>
                         <Table.HeaderCell />
-                        <Table.HeaderCell>Name</Table.HeaderCell>
-                        <Table.HeaderCell>Registration Date</Table.HeaderCell>
-                        <Table.HeaderCell>E-mail address</Table.HeaderCell>
-                        <Table.HeaderCell>Premium Plan</Table.HeaderCell>
+                        <Table.HeaderCell>Project Name</Table.HeaderCell>
+                        <Table.HeaderCell>%</Table.HeaderCell>
+                        <Table.HeaderCell>Owner</Table.HeaderCell>
+                        <Table.HeaderCell>Status</Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
-
                 <Table.Body>
                     <Table.Row>
                         <Table.Cell collapsing>
@@ -28,27 +33,19 @@ export class ProjectListComponent extends Component {
                         <Table.Cell>jhlilk22@yahoo.com</Table.Cell>
                         <Table.Cell>No</Table.Cell>
                     </Table.Row>
-                    <Table.Row>
-                        <Table.Cell collapsing>
-                            <Checkbox slider />
-                        </Table.Cell>
-                        <Table.Cell>Jamie Harington</Table.Cell>
-                        <Table.Cell>January 11, 2014</Table.Cell>
-                        <Table.Cell>jamieharingonton@yahoo.com</Table.Cell>
-                        <Table.Cell>Yes</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell collapsing>
-                            <Checkbox slider />
-                        </Table.Cell>
-                        <Table.Cell>Jill Lewis</Table.Cell>
-                        <Table.Cell>May 11, 2014</Table.Cell>
-                        <Table.Cell>jilsewris22@yahoo.com</Table.Cell>
-                        <Table.Cell>Yes</Table.Cell>
-                    </Table.Row>
                 </Table.Body>
                 </Table>
                 </div>
         );
     }
+}
+
+function getRequest() {
+            axios.get('api/bugs')
+            .then(function (response) {
+                return response;
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
 }

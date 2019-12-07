@@ -83,8 +83,11 @@ namespace BugTracker.Controllers
             int maxId = _context.ProjectSettings.Max(p => p.Id);
 
             projectSettings.Id = maxId + 1;
+
             projectSettings.ProjectOverview = "test";
+
             _context.ProjectSettings.Add(projectSettings);
+
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetProjectSettings", new { id = projectSettings.Id }, projectSettings);

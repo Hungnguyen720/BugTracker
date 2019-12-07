@@ -11,7 +11,7 @@ import { BugsDashboardComponent } from './components/ProjectComponents/Bugs/Bugs
 import { ProjectListComponent } from './components/ProjectComponents/ProjectListComponent';
 import { ProjectCreateComponent } from './components/ProjectComponents/ProjectCreateComponent';
 import { ProjectUsersComponent } from './components/ProjectComponents//ProjectUsersComponent';
-
+import { BugsCreateComponent } from './components/ProjectComponents/Bugs/BugsCreateComponent';
 
 import './custom.css'
 
@@ -23,14 +23,16 @@ export default class App extends Component {
       <Layout>
         <Route exact path='/' component={Home} />
         <Route path='/counter' component={Counter} />
-            <Route path='/fetch-data' component={FetchData} />
-            <Route path='/register' component={RegisterComponent} />
-            <Route path='/login' component={LoginComponent} />
-            <Route path='/:username/project/dashboard' component={ProjectDashboardComponent} />
-            <Route path='/:username/project/bugs' component={BugsDashboardComponent} />
-            <Route path='/:username/project/list' component={ProjectListComponent} />
-            <Route path='/:username/project/create' component={ProjectCreateComponent} />
-            <Route path='/:username/project/users' component={ProjectUsersComponent} />
+            <Route exact path='/fetch-data' component={FetchData} />
+            <Route exact path='/register' component={RegisterComponent} />
+            <Route exact path='/login' component={LoginComponent} />
+            <Route exact path='/:username/project/dashboard' component={ProjectDashboardComponent} />
+            <Route exact path='/:username/project/bugs' component={BugsDashboardComponent} />
+            <Route exact path='/:username/project/list' component={ProjectListComponent} />
+            <Route exact path='/:username/project/create' component={ProjectCreateComponent} />
+            <Route exact path='/:username/project/users' component={ProjectUsersComponent} />
+            <Route exact path='/:username/project/bugs/create' component={BugsCreateComponent} />
+
       </Layout>
     );
   }

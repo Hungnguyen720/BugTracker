@@ -1,51 +1,68 @@
 ﻿import React, { Component } from 'react';
 import { Checkbox, Table } from 'semantic-ui-react';
+import axios from 'axios';
 
 
 export class BugsDashboardComponent extends Component {
-    render() {
-        return (
-            <Table compact celled definition>
-                <Table.Header>
-                    <Table.Row>
-                        <Table.HeaderCell />
-                        <Table.HeaderCell>Name</Table.HeaderCell>
-                        <Table.HeaderCell>Registration Date</Table.HeaderCell>
-                        <Table.HeaderCell>E-mail address</Table.HeaderCell>
-                        <Table.HeaderCell>Premium Plan</Table.HeaderCell>
-                    </Table.Row>
-                </Table.Header>
+    constructor() {
+        super()
+        this.state = { bugsList: [] }
+    }
 
-                <Table.Body>
-                    <Table.Row>
-                        <Table.Cell collapsing>
-                            <Checkbox slider />
-                        </Table.Cell>
-                        <Table.Cell>John Lilki</Table.Cell>
-                        <Table.Cell>September 14, 2013</Table.Cell>
-                        <Table.Cell>jhlilk22@yahoo.com</Table.Cell>
-                        <Table.Cell>No</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell collapsing>
-                            <Checkbox slider />
-                        </Table.Cell>
-                        <Table.Cell>Jamie Harington</Table.Cell>
-                        <Table.Cell>January 11, 2014</Table.Cell>
-                        <Table.Cell>jamieharingonton@yahoo.com</Table.Cell>
-                        <Table.Cell>Yes</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell collapsing>
-                            <Checkbox slider />
-                        </Table.Cell>
-                        <Table.Cell>Jill Lewis</Table.Cell>
-                        <Table.Cell>May 11, 2014</Table.Cell>
-                        <Table.Cell>jilsewris22@yahoo.com</Table.Cell>
-                        <Table.Cell>Yes</Table.Cell>
-                    </Table.Row>
-                </Table.Body>
-            </Table>
+    componentDidMount() {
+        this.populateBugs()
+    }
+
+    static renderBugsTable(bugsList) {
+        return (
+                <Table compact celled definition>
+                    <Table.Header>
+                        <Table.Row>
+                            <Table.HeaderCell />
+                            <Table.HeaderCell>Bug</Table.HeaderCell>
+                            <Table.HeaderCell>Reporter</Table.HeaderCell>
+                            <Table.HeaderCell>Created</Table.HeaderCell>
+                            <Table.HeaderCell>Status</Table.HeaderCell>
+                            <Table.HeaderCell>Assigned To</Table.HeaderCell>
+                        </Table.Row>
+                    </Table.Header>
+                    <Table.Body>
+                        {bugsList.map(bug => 
+                            <Table.Row>
+                                <Table.Cell collapsing>
+                                    <Checkbox slider />
+                                </Table.Cell>
+                                <Table.Cell>{bug.title}</Table.Cell>
+                                <Table.Cell>{bug.reporter}</Table.Cell>
+                                <Table.Cell>{bug.dateCreated}</Table.Cell>
+                                <Table.Cell>{bug.status}</Table.Cell>
+                                <Table.Cell>{bug.assignedTo}</Table.Cell>
+                            </Table.Row>
+                        )}
+                    </Table.Body>
+                </Table>
         );
+    }
+
+
+
+    render() {
+        let contents = this.state.loading
+            ? <p><em>Loading...</em></p>
+            : BugsDashboardComponent.renderBugsTable(this.state.bugsList);
+
+        return (
+            <div>
+                {contents}
+            </div>
+        );
+    }
+
+
+    async populateBugs() {
+        const response = await fetch('api/bugs')
+        const data = await response.json()
+        console.log(data)
+        this.setState({ bugsList: data })
     }
 }
