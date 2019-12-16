@@ -18,5 +18,6 @@ namespace Data.Models
         public string Flag { get; set; }
         public string Comment { get; set; }
         public string Reporter { get; set; }
+        public string Reproducible { get; set; }
     }
 }

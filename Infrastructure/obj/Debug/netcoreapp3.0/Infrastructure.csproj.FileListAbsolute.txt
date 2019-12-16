@@ -1,0 +1,11 @@
+C:\code\BugTracker\Infrastructure\obj\Debug\netcoreapp3.0\Infrastructure.csprojAssemblyReference.cache
+C:\code\BugTracker\Infrastructure\obj\Debug\netcoreapp3.0\Infrastructure.AssemblyInfoInputs.cache
+C:\code\BugTracker\Infrastructure\obj\Debug\netcoreapp3.0\Infrastructure.AssemblyInfo.cs
+C:\code\BugTracker\Infrastructure\bin\Debug\netcoreapp3.0\Infrastructure.deps.json
+C:\code\BugTracker\Infrastructure\bin\Debug\netcoreapp3.0\Infrastructure.dll
+C:\code\BugTracker\Infrastructure\bin\Debug\netcoreapp3.0\Infrastructure.pdb
+C:\code\BugTracker\Infrastructure\bin\Debug\netcoreapp3.0\Data.dll
+C:\code\BugTracker\Infrastructure\bin\Debug\netcoreapp3.0\Data.pdb
+C:\code\BugTracker\Infrastructure\obj\Debug\netcoreapp3.0\Infrastructure.csproj.CopyComplete
+C:\code\BugTracker\Infrastructure\obj\Debug\netcoreapp3.0\Infrastructure.dll
+C:\code\BugTracker\Infrastructure\obj\Debug\netcoreapp3.0\Infrastructure.pdb

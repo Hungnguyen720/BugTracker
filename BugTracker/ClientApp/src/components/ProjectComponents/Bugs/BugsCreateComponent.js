@@ -1,5 +1,6 @@
 ﻿import React, { Component } from 'react';
-import { Form, Dropdown, Segment } from 'semantic-ui-react';
+import { Form, Dropdown, Button } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { EditorState } from 'draft-js';
 import { Editor } from 'react-draft-wysiwyg';
@@ -81,7 +82,7 @@ export class BugsCreateComponent extends Component {
     constructor() {
         super()
         this.state = {
-            title: '',
+            Title: '',
             DueDate: '',
             AssignedTo: '',
             IssueType: '',
@@ -94,6 +95,27 @@ export class BugsCreateComponent extends Component {
         this.handleDueDateChange = this.handleDueDateChange.bind(this)
         this.onEditorStateChange = this.onEditorStateChange.bind(this)
         this.handleDropdownChange = this.handleDropdownChange.bind(this)
+        this.handleFormSubmit = this.handleFormSubmit.bind(this)
+
+    }
+
+    handleFormSubmit = () => {
+       const { Title, DueDate, AssignedTo, IssueType, Followers, Flag, Severity } = this.state
+
+        axios.post('api/bugs', {
+            Title,
+            AssignedTo,
+            DueDate,
+            Severity,
+            Flag,
+            IssueType,
+            Followers
+        }).then(function (response) {
+            console.log(response)
+        }).catch(function (response) {
+            console.log(response)
+        })
+        
     }
 
     handleChange(event) {
@@ -105,11 +127,10 @@ export class BugsCreateComponent extends Component {
 
     }
 
-    handleDropdownChange(event, { value }) {
-        console.log(event.nativeEvent)
-
+    handleDropdownChange(event, result) {
+        const { name, value } = result
         this.setState({
-            [event.target.name] : value
+            [name] : value
         })
     }
 
@@ -125,6 +146,7 @@ export class BugsCreateComponent extends Component {
         });
     };
 
+
     render() {
         const { editorState } = this.state;
 
@@ -135,8 +157,8 @@ export class BugsCreateComponent extends Component {
                     <Form.Field>
                         <label>Bug Name</label>
                         <input
-                            name='ProjectName'
-                            value={this.state.title}
+                            name='Title'
+                            value={this.state.Title}
                             onChange={this.handleChange}
                         />
                     </Form.Field>
@@ -172,7 +194,7 @@ export class BugsCreateComponent extends Component {
                         placeholder="Issue Type"
                         selection
                         name="IssueType"
-                        value={this.state.issueType}
+                        value={this.state.IssueType}
                         options={issueTypeOptions}
                         onChange={this.handleDropdownChange}
 
@@ -188,6 +210,8 @@ export class BugsCreateComponent extends Component {
 
                     />
                     <button type='submit'>Submit</button>
+                    <Button basic color='red' as={Link} to="/test/project/bugs"> Cancel </Button>
+
                 </Form>
             </div>
         )

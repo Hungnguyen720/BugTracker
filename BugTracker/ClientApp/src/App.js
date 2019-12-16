@@ -12,6 +12,8 @@ import { ProjectListComponent } from './components/ProjectComponents/ProjectList
 import { ProjectCreateComponent } from './components/ProjectComponents/ProjectCreateComponent';
 import { ProjectUsersComponent } from './components/ProjectComponents//ProjectUsersComponent';
 import { BugsCreateComponent } from './components/ProjectComponents/Bugs/BugsCreateComponent';
+import { BugDetailsComponent } from './components/ProjectComponents/Bugs/BugDetailsComponent';
+
 
 import './custom.css'
 
@@ -32,6 +34,8 @@ export default class App extends Component {
             <Route exact path='/:username/project/create' component={ProjectCreateComponent} />
             <Route exact path='/:username/project/users' component={ProjectUsersComponent} />
             <Route exact path='/:username/project/bugs/create' component={BugsCreateComponent} />
+            <Route exact path='/:username/project/bugs/details/:bugID' component={BugDetailsComponent} />
+
 
       </Layout>
     );

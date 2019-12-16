@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Data.DataContext;
 using Data.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BugTracker.Controllers
 {
@@ -23,6 +24,7 @@ namespace BugTracker.Controllers
 
         // GET: api/Bugs
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<Bugs>>> GetBug()
         {
             return await _context.Project_Bugs.ToListAsync();
@@ -48,6 +50,7 @@ namespace BugTracker.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutBug(int id, Bugs bug)
         {
+
             if (id != bug.Id)
             {
                 return BadRequest();
@@ -80,6 +83,10 @@ namespace BugTracker.Controllers
         [HttpPost]
         public async Task<ActionResult<Bugs>> PostBug(Bugs bug)
         {
+            int maxId = _context.Project_Bugs.Max(b => b.Id);
+
+            bug.Id = maxId + 1;
+
             _context.Project_Bugs.Add(bug);
             await _context.SaveChangesAsync();
 
