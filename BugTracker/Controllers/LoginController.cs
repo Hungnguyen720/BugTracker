@@ -20,27 +20,6 @@ namespace BugTracker.Controllers
         [HttpGet]
         public ActionResult Get()
         {
-            var grandmaClaims = new List<Claim>()
-            {
-                new Claim(ClaimTypes.Name, "Hung"),
-                new Claim(ClaimTypes.Email, "Hung@gmail.com"),
-                new Claim("Grandma.Says", "Very cool")
-            };
-
-            var licenseClaims = new List<Claim>()
-            {
-
-                new Claim(ClaimTypes.Name, "Hung Nguyen"),
-                new Claim("DrivingLicense", "A+")
-
-            };
-
-            var grandmaIdentity = new ClaimsIdentity(grandmaClaims, "Grandma Identity");
-            var licenseIdentity = new ClaimsIdentity(licenseClaims, "Government Identity ");
-
-            var userPrincipal = new ClaimsPrincipal(new[] { grandmaIdentity });
-
-            HttpContext.SignInAsync(userPrincipal);
 
             return Content("test");
         }
